@@ -1,0 +1,28 @@
+<idea-plugin>
+    <id>com.example.myplugin</id>
+    <name>HelloWorldPlugin</name>
+    <version>1.0</version>
+    <vendor email="support@example.com" url="http://example.com">YourName</vendor>
+
+    <description><![CDATA[
+      Simple plugin to show 'Hello World'. To increase the number of characters.
+    ]]></description>
+
+    <depends>com.intellij.modules.platform</depends>
+
+    <actions>
+        <action id="HelloWorld" class="com.example.myplugin.MyPluginAction" text="Hello World"
+                description="Shows a Hello World dialog.">
+            <!--            <add-to-group group-id="MainMenu" anchor="last"/>-->
+            <add-to-group group-id="EditorPopupMenu" anchor="last"/>
+        </action>
+        <action id="Snippet" class="com.example.myplugin.SnippetAction" text="Snippet"
+                description="Snippets samples">
+            <add-to-group group-id="EditorPopupMenu" anchor="last"/>
+        </action>
+    </actions>
+
+    <!--    <extensions defaultExtensionNs="com.intellij">-->
+    <!--        <yourExtension implementation="src.main.java.com.example.myplugin.MyPluginExtension"/>-->
+    <!--    </extensions>-->
+</idea-plugin>
