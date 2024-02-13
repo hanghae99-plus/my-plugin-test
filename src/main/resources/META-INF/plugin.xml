@@ -25,4 +25,7 @@
     <!--    <extensions defaultExtensionNs="com.intellij">-->
     <!--        <yourExtension implementation="src.main.java.com.example.myplugin.MyPluginExtension"/>-->
     <!--    </extensions>-->
+    <extensions defaultExtensionNs="com.intellij">
+        <completion.contributor language="JAVA" implementationClass="com.example.myplugin.completion.MyCompletionContributor"/>
+    </extensions>
 </idea-plugin>

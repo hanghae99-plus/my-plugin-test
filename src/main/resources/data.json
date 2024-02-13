@@ -1,0 +1,20 @@
+{
+  "hi": "System.out.println(\"Hello World\");",
+  "sba": "@SpringBootApplication\npublic class Application {\n\tpublic static void main(String[] args) {\n\t\tSpringApplication.run(Application.class, args);\n\t}\n}",
+  "@c": "@RestController\npublic class MyController {\n\n\t@RequestMapping(\"/myEndpoint\")\n\tpublic String myMethod() {\n\t\treturn \"Hello World\";\n\t}\n}",
+  "@s": "@Service\npublic class MyService {\n\t@Autowired\n\tprivate MyRepository myRepository;\n}",
+  "dao": "public interface MyRepository extends JpaRepository<MyEntity, Long> {\n}",
+  "test@s": "@SpringBootTest\npublic class MyApplicationTests {\n\n\t@Test\n\tpublic void contextLoads() {\n\t}\n}",
+  "test@m": "@ExtendWith(MockitoExtension.class)\npublic class MyServiceTest {\n    @Mock\n    private MyDependency myDependency;\n\n    @InjectMocks\n    private MyService myService;\n\n    @Test\n    void testMyServiceMethod() {\n        // given\n        Mockito.when(myDependency.someMethod()).thenReturn(someValue);\n\n        // when\n        ResultType result = myService.testedMethod();\n\n        // then\n        Assertions.assertEquals(expectedValue, result);\n    }\n}",
+  "ap": "spring.datasource.url=jdbc:mysql://localhost:3306/mydb\nspring.datasource.username=dbuser\nspring.datasource.password=dbpass",
+  "yml": "server:\n  port: 8080\nspring:\n  config:\n    activate:\n      on-profile: dev\n  datasource:\n    url: jdbc:mysql://localhost:3306/mydb\n    driver-class-name: com.mysql.cj.jdbc.Driver\n    username: user\n    password: pass",
+  "#junit": "testImplementation 'org.springframework.boot:spring-boot-starter-test'",
+  "#log": "implementation 'org.springframework.boot:spring-boot-starter-logging'",
+  "#jpa": "implementation 'org.springframework.boot:spring-boot-starter-data-jpa'",
+  "#h2": "runtimeOnly 'com.h2database:h2'",
+  "#valid": "implementation 'org.springframework.boot:spring-boot-starter-validation'",
+  "#jackson": "implementation 'com.fasterxml.jackson.core:jackson-databind'",
+  "#lombok": "compileOnly 'org.projectlombok:lombok'\nannotationProcessor 'org.projectlombok:lombok'",
+  "#health": "implementation 'org.springframework.boot:spring-boot-starter-actuator'",
+  "#cache": "implementation 'org.springframework.boot:spring-boot-starter-cache'"
+}
