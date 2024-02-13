@@ -12,24 +12,17 @@ repositories {
 
 dependencies {
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.0'
-    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.0' // 버전 명시
     testImplementation 'org.mockito:mockito-core:3.6.28'
 }
 
 // Configure Gradle IntelliJ Plugin
 intellij {
-    version.set('2023.1.5')
-    type.set('IC') // Target IDE Platform
-    plugins.set([])
+    version.set('2023.1.5') // IntelliJ IDEA 버전
+    type.set('IC') // Target IDE Platform, IC는 IntelliJ Community Edition을 의미
 }
 
 tasks {
-    // Set the JVM compatibility versions
-//    withType<JavaCompile> {
-//        sourceCompatibility = '17'
-//        targetCompatibility = '17'
-//    }
-
     patchPluginXml {
         sinceBuild.set('231')
         untilBuild.set('241.*')
@@ -45,6 +38,3 @@ tasks {
         token.set(System.getenv('PUBLISH_TOKEN'))
     }
 }
-
-
-
