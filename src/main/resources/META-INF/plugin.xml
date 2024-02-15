@@ -11,7 +11,7 @@
     <depends>com.intellij.modules.platform</depends>
 
     <actions>
-        <action id="HelloWorld" class="com.example.myplugin.MyPluginAction" text="Hello World"
+        <action id="HelloWorld" class="com.example.myplugin.SamplePluginAction" text="Hello World"
                 description="Shows a Hello World dialog.">
             <!--            <add-to-group group-id="MainMenu" anchor="last"/>-->
             <add-to-group group-id="EditorPopupMenu" anchor="last"/>
@@ -19,6 +19,11 @@
         <action id="Snippet" class="com.example.myplugin.SnippetAction" text="Snippet"
                 description="Snippets samples">
             <add-to-group group-id="EditorPopupMenu" anchor="last"/>
+            <keyboard-shortcut keymap="$default" first-keystroke="control meta Y"/>
+            <!-- macOS -->
+            <keyboard-shortcut keymap="Mac OS X" first-keystroke="meta Y"/>
+            <!-- Windows/Linux -->
+            <keyboard-shortcut keymap="Default for XWin" first-keystroke="control alt Y"/>
         </action>
     </actions>
 
@@ -26,6 +31,7 @@
     <!--        <yourExtension implementation="src.main.java.com.example.myplugin.MyPluginExtension"/>-->
     <!--    </extensions>-->
     <extensions defaultExtensionNs="com.intellij">
-        <completion.contributor language="JAVA" implementationClass="com.example.myplugin.completion.MyCompletionContributor"/>
+        <completion.contributor language="JAVA"
+                                implementationClass="com.example.myplugin.completion.CompletionContributorImpl"/>
     </extensions>
 </idea-plugin>

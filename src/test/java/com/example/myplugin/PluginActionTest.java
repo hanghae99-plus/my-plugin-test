@@ -32,13 +32,13 @@ public class PluginActionTest {
     @Test
     public void testActionPerformed() {
         // Instantiate your action
-        MyPluginAction action = new MyPluginAction();
+        SamplePluginAction action = new SamplePluginAction();
 
         // Call the method under test
         action.actionPerformed(mockEvent);
 
         // Verify the expected behavior
-        // Assuming MyPluginAction inserts "Hello World!" into the Document
+        // Assuming SamplePluginAction inserts "Hello World!" into the Document
         verify(mockDocument).insertString(anyInt(), eq("Hello World!"));
     }
 }
