@@ -4,13 +4,21 @@
   "$ap": "spring.datasource.url=jdbc:mysql://localhost:3306/mydb\nspring.datasource.username=dbuser\nspring.datasource.password=dbpass",
   "$yml": "server:\n  port: 8080\nspring:\n  config:\n    activate:\n      on-profile: dev\n  datasource:\n    url: jdbc:mysql://localhost:3306/mydb\n    driver-class-name: com.mysql.cj.jdbc.Driver\n    username: user\n    password: pass",
 
-  "@sba": "@SpringBootApplication\npublic class Application {\n\tpublic static void main(String[] args) {\n\t\tSpringApplication.run(Application.class, args);\n\t}\n}",
-  "@c": "@RestController\npublic class MyController {\n\n\t@RequestMapping(\"/myEndpoint\")\n\tpublic String myMethod() {\n\t\treturn \"Hello World\";\n\t}\n}",
-  "@s": "@Service\npublic class MyService {\n\t@Autowired\n\tprivate MyRepository myRepository;\n}",
-  "@dao": "public interface MyRepository extends JpaRepository<MyEntity, Long> {\n}",
+  "@@sba": "@SpringBootApplication\npublic class Application {\n\tpublic static void main(String[] args) {\n\t\tSpringApplication.run(Application.class, args);\n\t}\n}",
+  "@@c": "@RestController\npublic class MyController {\n\n\t@RequestMapping(\"/myEndpoint\")\n\tpublic String myMethod() {\n\t\treturn \"Hello World\";\n\t}\n}",
+  "@@s": "@Service\npublic class MyService {\n\t@Autowired\n\tprivate MyRepository myRepository;\n}",
+  "@@dao": "public interface MyRepository extends JpaRepository<MyEntity, Long> {\n}",
+  "@@m": "@GetMapping(\"/yourEndpoint\")\npublic ResponseEntity<String> getMethod() {\n\treturn ResponseEntity.ok(\"Response from GET method\");\n}",
+  "@@p": "@PostMapping(\"/yourEndpoint\")\npublic ResponseEntity<String> postMethod(@RequestBody YourObject object) {\n\treturn ResponseEntity.ok(\"Received object\");\n}",
+  "@@rep": "public interface YourRepository extends JpaRepository<YourEntity, Long> {\n\t// Custom query methods\n}",
+  "@@cfg": "@Configuration\npublic class YourConfiguration {\n\t// Bean definitions\n}",
+  "@@sec": "@EnableWebSecurity\npublic class WebSecurityConfig extends WebSecurityConfigurerAdapter {\n\t@Override\n\tprotected void configure(HttpSecurity http) throws Exception {\n\t\thttp\n\t\t\t.csrf().disable()\n\t\t\t.authorizeRequests().anyRequest().authenticated()\n\t\t\t.and()\n\t\t\t.httpBasic();\n\t}\n}",
+  "@@adv": "@Service\npublic class YourAdvancedService {\n\t@Autowired\n\tprivate YourRepository repository;\n\n\tpublic YourEntity processSomething() {\n\t\t// Your business logic\n\t}\n}",
+  "@@ent": "@Entity\npublic class YourEntity {\n\t@Id\n\t@GeneratedValue(strategy = GenerationType.IDENTITY)\n\tprivate Long id;\n\n\t// Other fields and methods\n}",
 
   "test@s": "@SpringBootTest\npublic class MyApplicationTests {\n\n\t@Test\n\tpublic void contextLoads() {\n\t}\n}",
   "test@m": "@ExtendWith(MockitoExtension.class)\npublic class MyServiceTest {\n    @Mock\n    private MyDependency myDependency;\n\n    @InjectMocks\n    private MyService myService;\n\n    @Test\n    void testMyServiceMethod() {\n        // given\n        Mockito.when(myDependency.someMethod()).thenReturn(someValue);\n\n        // when\n        ResultType result = myService.testedMethod();\n\n        // then\n        Assertions.assertEquals(expectedValue, result);\n    }\n}",
+  "test@ctr": "@WebMvcTest(controllers = YourController.class)\npublic class YourControllerTest {\n\t@Autowired\n\tprivate MockMvc mockMvc;\n\n\t@Test\n\tpublic void testYourEndpoint() throws Exception {\n\t\tmockMvc.perform(get(\"/yourEndpoint\"))\n\t\t\t.andExpect(status().isOk())\n\t\t\t.andExpect(content().string(containsString(\"expected response\")));\n\t}\n}",
 
   "^junit": "testImplementation 'org.springframework.boot:spring-boot-starter-test'",
   "^log": "implementation 'org.springframework.boot:spring-boot-starter-logging'",
@@ -20,5 +28,13 @@
   "^jackson": "implementation 'com.fasterxml.jackson.core:jackson-databind'",
   "^lombok": "compileOnly 'org.projectlombok:lombok'\nannotationProcessor 'org.projectlombok:lombok'",
   "^health": "implementation 'org.springframework.boot:spring-boot-starter-actuator'",
-  "^cache": "implementation 'org.springframework.boot:spring-boot-starter-cache'"
+  "^cache": "implementation 'org.springframework.boot:spring-boot-starter-cache'",
+  "^mockito": "testImplementation 'org.mockito:mockito-core:3.x'",
+  "^assertj": "testImplementation 'org.assertj:assertj-core:3.x'",
+  "^web": "implementation 'org.springframework.boot:spring-boot-starter-web'",
+  "^data": "implementation 'org.springframework.boot:spring-boot-starter-data-jpa'",
+  "^sec": "implementation 'org.springframework.boot:spring-boot-starter-security'",
+
+  "util@log": "private static final Logger log = LoggerFactory.getLogger(YourClass.class);\n\npublic void yourMethod() {\n\tlog.info(\"Message\");\n}",
+  "util@time": "public String getCurrentTime() {\n\treturn LocalDateTime.now().format(DateTimeFormatter.ISO_LOCAL_DATE_TIME);\n}"
 }
